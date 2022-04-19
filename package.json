@@ -4,7 +4,7 @@
   "description": "gofound是一个golang实现的全文检索引擎",
   "main": "index.js",
   "scripts": {
-    "test": "successfully"
+    "test": "echo successfully"
   },
   "keywords": [
     "全文检索",

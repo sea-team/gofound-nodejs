@@ -1,6 +1,6 @@
 let Client = require('./index')
 
-let client = new Client("http://175.178.229.216:5678/api");
+let client = new Client("http://127.0.0.1:5678/api");
 
 //添加索引
 client.addDocument(100, "小红今年在上一年级", {
