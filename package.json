@@ -1,0 +1,19 @@
+{
+  "name": "gofound",
+  "version": "1.0.0",
+  "description": "gofound是一个golang实现的全文检索引擎",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "全文检索",
+    "gofound",
+    "gofound sdk"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.26.1"
+  }
+}
