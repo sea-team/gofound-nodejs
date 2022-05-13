@@ -25,6 +25,9 @@ let Client = require('gofound');
 
 let client = new Client("http://175.178.229.216:5678/api");
 
+//指定数据库和开启认证，需要gofound-1.1.0以上版本
+// let client = new Client("http://175.178.229.216:5678/api", "test", {username:'admin', password:'123456'});
+
 //添加索引
 client.addDocument(100, "小红今年在上一年级", {
     "name": "test", "age": "18",

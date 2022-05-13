@@ -1,12 +1,33 @@
 const axios = require('axios');
 
 
-function Client(addr) {
+function Client(addr, database, auth) {
     this.addr = addr;
 
-    function request(url, data) {
+    this.database = database;
+    this.auth = auth;
 
-        return axios.post(addr + url, data)
+    this.request=function (url, data) {
+        // basic auth
+        let self = this;
+
+        //数据库
+        if (self.database) {
+            if (url.indexOf("?") === -1) {
+                url = url + "?database=" + self.database;
+            } else {
+                url = url + "&database=" + self.database;
+            }
+        }
+
+        let apiUrl=self.addr + url;
+
+        return axios({
+            method: 'post',
+            url: apiUrl,
+            data: data,
+            auth: self.auth ? self.auth : null
+        })
     }
 
     /**
@@ -18,7 +39,7 @@ function Client(addr) {
      * @returns {Promise<AxiosResponse<any>>}
      */
     this.addDocument = function (id, text, document) {
-        return request('/index', {
+        return this.request('/index', {
             id: id,
             text: text,
             document: document
@@ -36,7 +57,7 @@ function Client(addr) {
      * @returns {Promise<AxiosResponse<any>>}
      */
     this.query = function (query, page = 1, limit = 10, order = "desc", highlight = null) {
-        return request("/query", {
+        return this.request("/query", {
             query: query,
             page: page,
             limit: limit,
@@ -52,7 +73,7 @@ function Client(addr) {
      * @returns {Promise<AxiosResponse<any>>}
      */
     this.removeDocument = function (id) {
-        return request("/remove", {
+        return this.request("/remove", {
             id: id
         })
     }

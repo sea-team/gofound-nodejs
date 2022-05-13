@@ -1,6 +1,6 @@
 let Client = require('./index')
 
-let client = new Client("http://127.0.0.1:5678/api");
+let client = new Client("http://127.0.0.1:5678/api", "test", {"username": "admin", "password": "123321"})
 
 //添加索引
 client.addDocument(100, "小红今年在上一年级", {
@@ -29,6 +29,6 @@ client.query("小红")
 
 
 //删除索引
-client.removeDocument(100).then(r => {
-    console.log("删除索引返回：", r.data)
-})
+// client.removeDocument(100).then(r => {
+//     console.log("删除索引返回：", r.data)
+// })
